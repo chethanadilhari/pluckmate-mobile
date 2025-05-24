@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const index = () => {
+const home = () => {
   return (
     <View
       style={{
@@ -16,4 +16,4 @@ const index = () => {
   );
 }
 
-export default index
+export default home

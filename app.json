@@ -1,37 +1,41 @@
 {
   "expo": {
-    "name": "pluckmate-mobile",
-    "slug": "pluckmate-mobile",
+    "name": "",
+    "slug": "PluckMate",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logo/color-logo.png",
     "scheme": "pluckmatemobile",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/logo/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1F4D33"
+    },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/logo/logo.png",
+        "backgroundColor": "#1F4D33"
       },
       "edgeToEdgeEnabled": true
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/logo/color-logo.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "image": "./assets/images/logo/logo.png",
+          "imageWidth": 1000,
+          "backgroundColor": "#1F4D33"
         }
       ],
       "expo-font"

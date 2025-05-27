@@ -8,6 +8,7 @@ const payroll = () => {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: 'white',
       }}
       >
       <Text className="font-inter text-xl text-teaGreen">payroll</Text>

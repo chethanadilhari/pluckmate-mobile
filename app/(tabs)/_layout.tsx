@@ -70,7 +70,7 @@ const _layout = () => {
     <View className="flex-1 bg-white">
               <Image
         source={headerImage}
-        className="absolute w-full z-0 h-64 rounded-3xl"
+        className="absolute w-full z-0 h-64 rounded-b-3xl"
         resizeMode="cover"
       />
       <Image
@@ -90,9 +90,9 @@ const _layout = () => {
                     elevation: 0,
                     backgroundColor: '#1F4D33',
                     borderTopWidth: 0,
-                    height: 90,
-                    borderTopLeftRadius: 20,
-                    borderTopRightRadius: 20,
+                    height: 80,
+                    borderTopLeftRadius: 30,
+                    borderTopRightRadius: 30,
                     borderBottomLeftRadius: 0,
                     borderBottomRightRadius: 0,
                 },

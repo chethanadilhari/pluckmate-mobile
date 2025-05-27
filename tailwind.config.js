@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         teaGreen: "#1F4D33",
+        lightTeaGreen: "#D8E2B8",
         lightBrown: "#B38A5C",
         lightGray: "#D9D9D9",
         darkBrown: "#5E360A",

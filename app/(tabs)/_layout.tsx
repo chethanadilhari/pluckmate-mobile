@@ -1,12 +1,26 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Text, View } from 'react-native';
+import { Asset } from 'expo-asset';
+import { Tabs, usePathname } from 'expo-router';
+import React, { useEffect } from 'react';
+import { Image, Text, View } from 'react-native';
 import AttendanceIcon from '../../assets/icons/attendance.svg';
 import HarvestIcon from '../../assets/icons/harvest.svg';
 import HomeIcon from '../../assets/icons/home.svg';
 import payrollIcon from '../../assets/icons/payroll.svg';
 import TasksIcon from '../../assets/icons/tasks.svg';
-// import TabIcon from '../../components/tabIcon';
+
+const headerImages = [
+  require('../../assets/headers/home.jpeg'),
+  require('../../assets/headers/attendance.jpg'),
+  require('../../assets/headers/task.jpg'),
+  require('../../assets/headers/harvest.jpg'),
+];
+
+useEffect(() => {
+  const preloadImages = async () => {
+    await Asset.loadAsync(headerImages);
+  };
+  preloadImages();
+}, []);
 
 function TabIcon({ Icon, focused, label }: any) {
       return (
@@ -30,9 +44,39 @@ function TabIcon({ Icon, focused, label }: any) {
       );
 }
 
+// 🔁 Dynamic image based on path
+const getHeaderImage = (pathname: string) => {
+  if (pathname.includes('/attendance')) {
+    return require('../../assets/headers/attendance.jpg');
+  }
+  if (pathname.includes('/tasks')) {
+    return require('../../assets/headers/task.jpg');
+  }
+  if (pathname.includes('/harvest')) {
+    return require('../../assets/headers/harvest.jpg');
+  }
+  if (pathname.includes('/payroll')) {
+    return require('../../assets/headers/home.jpeg');
+  }
+  return require('../../assets/headers/home.jpeg'); // default
+};
 
 const _layout = () => {
+      const pathname = usePathname();
+  const headerImage = getHeaderImage(pathname);
+
     return (
+    <View className="flex-1 bg-white">
+              <Image
+        source={headerImage}
+        className="absolute w-full z-0 h-64 rounded-3xl"
+        resizeMode="cover"
+      />
+      <Image
+        source={require('../../assets/images/logo/logo.png')}
+        className="w-48 h-52 mt-10 mb-2 mx-auto"
+        style={{ tintColor: '#FFFFFF' }}
+      />
         <Tabs
             screenOptions={{
                 headerShown: false,
@@ -99,6 +143,7 @@ const _layout = () => {
 
                 }} />
         </Tabs>
+    </View>
     )
 }
 

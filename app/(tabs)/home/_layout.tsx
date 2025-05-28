@@ -18,7 +18,7 @@ export default function HomeLayout() {
       <TopTabNav tabs={tabs} />
 
       <ScrollView
-        className="flex-1 px-5 "
+        className="flex-1 px-5"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ minHeight: '100%', paddingBottom: 10}}
       >

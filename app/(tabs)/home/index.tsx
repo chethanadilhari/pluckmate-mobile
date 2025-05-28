@@ -26,11 +26,11 @@ const SummaryTab = () => {
   );
 
   return (
-    <ScrollView className="flex-1 rounded-3xl mb-24 bg-white" showsVerticalScrollIndicator={false}>
+    <ScrollView className="flex-1 rounded-3xl mb-24  bg-white" showsVerticalScrollIndicator={false}>
       {/* Header with Background */}
       <ImageBackground
         source={require('../../../assets/headers/bg.jpg')}
-        className="h-24 w-full justify-end px-4 pb-6"
+        className="h-28 w-full justify-end px-4 pb-6"
         imageStyle={{ borderRadius:24 }}
       >
         <View className="flex-row justify-between items-center">
@@ -43,7 +43,7 @@ const SummaryTab = () => {
       </ImageBackground>
 
       {/* Cards */}
-      <View className="p-4 rounded-2xl bg-lightTeaGreen mt-4">
+      <View className="p-4 rounded-3xl bg-lightTeaGreen mt-4">
         <Card
           title="Attendance Summary"
           icon={<FontAwesome5 name="user-check" size={18} color="white" />}

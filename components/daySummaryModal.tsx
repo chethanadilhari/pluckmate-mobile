@@ -34,16 +34,17 @@ const DaySummaryModal = ({
   return (
     <Modal isVisible={visible} onBackdropPress={onClose}>
       <View className="bg-white rounded-2xl p-4">
-        <View className="flex-row justify-between items-center mb-3">
+        <View className="flex-row justify-between items-center p-4 mb-4">
           <View className="flex-row items-center">
-            <FontAwesome name="calendar" size={18} color="#1F4D33" />
+            <FontAwesome name="calendar" size={24} color="#1F4D33" />
             <Text className="ml-2 text-[#1F4D33] font-bold text-lg">
               {new Date(date).toDateString()}
             </Text>
           </View>
           <TouchableOpacity onPress={onClose}>
-            <AntDesign name="closecircle" size={24} color="#1F4D33" />
+            <AntDesign className=""name="closecircle" size={32} color="#1F4D33" />
           </TouchableOpacity>
+           
         </View>
 
         {data ? (
@@ -62,10 +63,12 @@ const DaySummaryModal = ({
 };
 
 const InfoRow = ({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) => (
-  <View className="border border-[#B38A5C] rounded-xl p-3 mb-2 flex-row items-center">
+  <View className="border-2 border-gray-400 rounded-xl p-4 mb-2 flex-row items-center">
     {icon}
     <Text className="ml-2 text-[#1F4D33]">
-      <Text className="font-semibold">{label}:</Text> {value}
+      <Text className="font-semibold">{label}:
+        
+        </Text> {value}
     </Text>
   </View>
 );

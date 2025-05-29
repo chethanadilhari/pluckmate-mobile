@@ -30,7 +30,7 @@ const SummaryTab = () => {
       {/* Header with Background */}
       <ImageBackground
         source={require('../../../assets/headers/bg.jpg')}
-        className="h-28 w-full justify-end px-4 pb-6"
+        className="h-28 w-full justify-end   px-4 pb-6"
         imageStyle={{ borderRadius:24 }}
       >
         <View className="flex-row justify-between items-center">

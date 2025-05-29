@@ -4,7 +4,6 @@ import React from 'react';
 import { ScrollView, View } from 'react-native';
 
 export default function HomeLayout() {
-    //   const [activeTab, setActiveTab] = useState<'summary' | 'calendar' | 'insights'>('summary');
 
       const tabs = [
             { label: 'Today\'s Summary', path: '/home' },

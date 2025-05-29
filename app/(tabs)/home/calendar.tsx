@@ -36,15 +36,7 @@ const CalendarTab = () => {
     <ScrollView className="flex-1 bg-white relative">
 
       <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: -1, backgroundColor: '#D3C5B5', borderRadius: 24 }} />
-      {/* Background Image */}
-    {/*  <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: -1 }}>
-        <Image
-          source={require('../../../assets/images/calendar-background.jpg')}
-          style={{ width: '100%', height: '100%' }}
-          resizeMode="cover"
-          borderRadius={24}
-        />
-      </View>
+   
 
       {/* Calendar Card */}
       <View className="p-6 rounded-2xl">

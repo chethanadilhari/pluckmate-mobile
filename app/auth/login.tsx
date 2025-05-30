@@ -1,7 +1,7 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React from 'react';
+import { Text, View } from 'react-native';
 
-const login = () => {
+const Login = () => {
   return (
     <View
       style={{
@@ -16,4 +16,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login;

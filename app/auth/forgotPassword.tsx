@@ -1,7 +1,7 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React from 'react';
+import { Text, View } from 'react-native';
 
-const forgotPassword = () => {
+const ForgotPassword = () => {
   return (
     <View
       style={{
@@ -16,4 +16,4 @@ const forgotPassword = () => {
   )
 }
 
-export default forgotPassword
+export default ForgotPassword;

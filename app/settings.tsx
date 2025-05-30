@@ -1,7 +1,7 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React from 'react';
+import { Text, View } from 'react-native';
 
-const settings = () => {
+const Settings = () => {
   return (
     <View
       style={{
@@ -16,4 +16,4 @@ const settings = () => {
   )
 }
 
-export default settings
+export default Settings;

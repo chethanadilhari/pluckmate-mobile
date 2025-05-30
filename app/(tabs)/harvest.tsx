@@ -1,7 +1,7 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React from 'react';
+import { Text, View } from 'react-native';
 
-const harvest = () => {
+const Harvest = () => {
   return (
     <View
       style={{
@@ -16,4 +16,4 @@ const harvest = () => {
   )
 }
 
-export default harvest
+export default Harvest;

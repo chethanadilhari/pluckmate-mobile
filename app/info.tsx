@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-const info = () => {
+const Info = () => {
     return (
         <View
             style={{
@@ -17,8 +17,8 @@ const info = () => {
 }
 
 // Hide the header
-info.options = {
+Info.options = {
     headerShown: false,
 }
 
-export default info
+export default Info;

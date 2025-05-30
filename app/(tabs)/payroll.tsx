@@ -1,7 +1,7 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React from 'react';
+import { Text, View } from 'react-native';
 
-const payroll = () => {
+const Payroll = () => {
   return (
     <View
       style={{
@@ -16,4 +16,4 @@ const payroll = () => {
   )
 }
 
-export default payroll
+export default Payroll;

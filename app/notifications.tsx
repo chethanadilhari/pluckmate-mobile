@@ -1,7 +1,7 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React from 'react';
+import { Text, View } from 'react-native';
 
-const notification = () => {
+const Notifications = () => {
   return (
     <View
       style={{
@@ -16,4 +16,4 @@ const notification = () => {
   )
 }
 
-export default notification
+export default Notifications;

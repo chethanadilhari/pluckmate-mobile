@@ -1,7 +1,7 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React from 'react';
+import { Text, View } from 'react-native';
 
-const profile = () => {
+const Profile = () => {
   return (
     <View
       style={{
@@ -16,4 +16,4 @@ const profile = () => {
   )
 }
 
-export default profile
+export default Profile;

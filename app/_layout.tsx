@@ -23,11 +23,7 @@ export default function RootLayout() {
         headerShown: false,
       }}
     />
-    <Stack.Screen
-      name="tasks/[id]"
-      options={{
-        headerShown: false,
-      }}
-    />
+ 
+    
   </Stack>
 }

@@ -68,12 +68,12 @@ function TabsLayout({ onMenuPress }: { onMenuPress: () => void }) {
           top: 50,
           left: 20,
           zIndex: 10,
-          backgroundColor: 'rgba(0,0,0,0.3)',
-          padding: 10,
+          backgroundColor: 'white',
+          padding: 7,
           borderRadius: 12,
         }}
       >
-        <Text style={{ color: 'white', fontWeight: 'bold' }}>☰</Text>
+        <Text style={{ color: '#1F4D33', fontWeight: 'bold', fontSize: 30 }}>☰</Text>
       </TouchableOpacity>
 
       <Image
@@ -154,10 +154,10 @@ export default function LayoutWithCustomDrawer() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <DrawerLayout
         ref={drawerRef}
-        drawerWidth={280}
+        drawerWidth={350}
         drawerPosition="left"
         drawerType="front"
-        drawerBackgroundColor="#fff"
+        drawerBackgroundColor="transparent"
         renderNavigationView={() => (
            <CustomDrawer closeDrawer={() => drawerRef.current?.closeDrawer()} />
         )}

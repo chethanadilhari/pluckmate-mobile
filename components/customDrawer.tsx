@@ -6,21 +6,22 @@ import {
   Ionicons,
   MaterialIcons,
 } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
+import { usePathname, useRouter } from 'expo-router';
 import React from 'react';
 import {
   Image,
-  ScrollView,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 type ValidRoute =
   | '/home'
   | '/attendance'
   | '/tasks'
   | '/harvest'
+  | '/home/insights'
   | '/payroll'
   | '/analytics'
   | '/profile'
@@ -34,37 +35,114 @@ type CustomDrawerProps = {
   closeDrawer: () => void;
 };
 
-type MenuItemProps = {
+type MenuItem = {
   icon: React.ReactNode;
   label: string;
   route: ValidRoute;
-  closeDrawer: () => void;
 };
 
-const MenuItem = ({ icon, label, route, closeDrawer }: MenuItemProps) => {
-  const router = useRouter();
+type Section = {
+  title?: string;
+  items: MenuItem[];
+};
 
-  const handlePress = () => {
+const CustomDrawer = ({ closeDrawer }: CustomDrawerProps) => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleNavigate = (route: ValidRoute) => {
     router.push(route as any);
     closeDrawer();
   };
 
-  return (
-    <TouchableOpacity
-      onPress={handlePress}
-      className="flex-row items-center space-x-3 p-3 rounded-lg"
-    >
-      {icon}
-      <Text className="text-[#1F4D33] text-xl font-inter font-medium">{label}</Text>
-    </TouchableOpacity>
-  );
-};
+  const sections: Section[] = [
+    {
+      items: [
+        {
+          icon: <FontAwesome name="home" size={24} color="#555252" />,
+          label: 'Home',
+          route: '/home',
+        },
+        {
+          icon: <MaterialIcons name="people" size={28} color="#555252" />,
+          label: 'Attendance',
+          route: '/attendance',
+        },
+        {
+          icon: <FontAwesome5 name="tasks" size={28} color="#555252" />,
+          label: 'Tasks',
+          route: '/tasks',
+        },
+        {
+          icon: <MaterialIcons name="eco" size={28} color="#555252" />,
+          label: 'Harvest',
+          route: '/harvest',
+        },
+        {
+          icon: <FontAwesome name="money" size={28} color="#555252" />,
+          label: 'Payroll',
+          route: '/payroll',
+        },
+        {
+          icon: <FontAwesome5 name="chart-bar" size={28} color="#555252" />,
+          label: 'Insights',
+          route: '/home/insights',
+        },
+      ],
+    },
+    {
+      title: 'Communication',
+      items: [
+        {
+          icon: <FontAwesome name="user" size={28} color="#555252" padding="4"/>,
+          label: 'Profile',
+          route: '/profile',
+        },
+        {
+          icon: <Ionicons name="notifications" size={28} color="#555252" />,
+          label: 'Notifications',
+          route: '/notifications',
+        },
+        {
+          icon: <Entypo name="share" size={32} color="#555252" />,
+          label: 'Share',
+          route: '/share',
+        },
+        {
+          icon: <Ionicons name="information-circle-outline" size={32} color="#555252" />,
+          label: 'Info',
+          route: '/info',
+        },
+      ],
+    },
+    {
+      title: 'Settings',
+      items: [
+        {
+          icon: <Ionicons name="settings" size={28} color="#555252" />,
+          label: 'Settings',
+          route: '/settings',
+        },
+        {
+          icon: <Feather name="power" size={28} color="#555252" />,
+          label: 'Logout',
+          route: '/logout',
+        },
+      ],
+    },
+  ];
 
-const CustomDrawer = ({ closeDrawer }: CustomDrawerProps) => {
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      {/* Header */}
-      <View className="bg-[#1F4D33] w-full h-auto p-4 rounded-br-3xl">
+    <View style={{ flex: 1 }}>
+      {/* Drawer Header */}
+      <View
+        style={{
+          backgroundColor: '#1F4D33',
+          width: '100%',
+          padding: 27,
+          borderTopRightRadius: 24,
+        }}
+      >
         <Image
           source={require('../assets/images/logo/logo.png')}
           style={{ width: 275, height: 170 }}
@@ -72,29 +150,77 @@ const CustomDrawer = ({ closeDrawer }: CustomDrawerProps) => {
         />
       </View>
 
-      <View className="p-6">
-        <MenuItem icon={<FontAwesome name="home" size={20} color="#1F4D33" />} label="Home" route="/home" closeDrawer={closeDrawer} />
-        <MenuItem icon={<MaterialIcons name="people" size={20} color="#1F4D33" />} label="Attendance" route="/attendance" closeDrawer={closeDrawer} />
-        <MenuItem icon={<FontAwesome5 name="tasks" size={18} color="#1F4D33" />} label="Tasks" route="/tasks" closeDrawer={closeDrawer} />
-        <MenuItem icon={<MaterialIcons name="eco" size={20} color="#1F4D33" />} label="Harvest" route="/harvest" closeDrawer={closeDrawer} />
-        <MenuItem icon={<FontAwesome name="money" size={18} color="#1F4D33" />} label="Payroll" route="/payroll" closeDrawer={closeDrawer} />
-        <MenuItem icon={<FontAwesome5 name="chart-bar" size={18} color="#1F4D33" />} label="Analytics" route="/analytics" closeDrawer={closeDrawer} />
+      {/* Menu Sections */}
+      <View style={{ flex: 1 }}>
+        <View className="p-2 bg-white " style={{ flex: 1 }}>
+          <ScrollView
+            contentContainerStyle={{ paddingBottom: 24, marginBottom: 20 }}
+            showsVerticalScrollIndicator={false}
+          >
+            {sections.map((section, sectionIndex) => (
+              <View key={sectionIndex} className="mb-2 p-2">
+                {section.title && (
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      color: '#676666',
+                      marginBottom: 6,
+                    }}
+                  >
+                    {section.title}
+                  </Text>
+                )}
 
-        <View className="border-t border-gray-300 my-4" />
-        <Text className="text-xs text-gray-500 mb-2">Communication</Text>
+                {section.items.map((item, itemIndex) => {
+                  const isActive = pathname === item.route;
+                  return (
+                    <TouchableOpacity
+                      key={itemIndex}
+                      onPress={() => handleNavigate(item.route)}
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        padding: 12,
+                        borderRadius: 20,
+                        marginBottom: 2,
+                        gap: 12,
+                        backgroundColor: isActive ? '#DBDCDF' : undefined,
+                        borderWidth: isActive ? 1 : 0,
+                        borderColor: isActive ? '#C0C0C0' : undefined,
+                      }}
+                      disabled={isActive}
+                    >
+                      {item.icon}
+                      <Text
+                        style={{
+                          color: '#555252',
+                          fontSize: 15,
+                          fontWeight: '500',
+                          fontFamily: 'inter-bold',
+                        }}
+                      >
+                        {item.label}
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                })}
 
-        <MenuItem icon={<FontAwesome name="user" size={18} color="#1F4D33" />} label="Profile" route="/profile" closeDrawer={closeDrawer} />
-        <MenuItem icon={<Ionicons name="notifications" size={20} color="#1F4D33" />} label="Notifications" route="/notifications" closeDrawer={closeDrawer} />
-        <MenuItem icon={<Entypo name="share" size={18} color="#1F4D33" />} label="Share" route="/share" closeDrawer={closeDrawer} />
-        <MenuItem icon={<Ionicons name="information-circle-outline" size={20} color="#1F4D33" />} label="Info" route="/info" closeDrawer={closeDrawer} />
-
-        <View className="border-t border-gray-300 my-4" />
-        <Text className="text-xs text-gray-500 mb-2">Settings</Text>
-
-        <MenuItem icon={<Ionicons name="settings" size={20} color="#1F4D33" />} label="Settings" route="/settings" closeDrawer={closeDrawer} />
-        <MenuItem icon={<Feather name="power" size={20} color="#1F4D33" />} label="Logout" route="/logout" closeDrawer={closeDrawer} />
+                {sectionIndex < sections.length - 1 && (
+                  <View
+                    style={{
+                      borderTopWidth: 2,
+                      borderTopColor: '#D1D5DB',
+                      marginTop: 16,
+                      marginBottom: 8,
+                    }}
+                  />
+                )}
+              </View>
+            ))}
+          </ScrollView>
+        </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

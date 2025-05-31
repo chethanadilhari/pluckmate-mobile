@@ -2,6 +2,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { CalendarDays, ChevronDown, Search, } from 'lucide-react-native';
 import { useState } from 'react';
 import { Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import Worker from '../../components/attendance/worker';
 
 
 const Attendance = () => {
@@ -79,7 +80,44 @@ const Attendance = () => {
             <Search color="black" size={20} style={{ marginLeft: 8 }} />
           </View>
         </View>
-        <View></View>
+        <View className='flex-row items-center justify-between'
+          style={{
+            marginTop: 0,
+            paddingHorizontal: 16,
+            width: '90%',
+
+          }}>
+          <Text className="text-lg  text-gray-700 mt-4">No</Text>
+          <Text className="text-lg  text-gray-700 mt-4">Name</Text>
+          <Text className="text-lg  text-gray-700 mt-4">Present/Absent</Text>
+        </View>
+        <Worker />
+        <Worker />
+        <Worker />
+        <Worker />
+        <Worker />
+        <View style={{ alignItems: 'center', marginTop: 20 }}>
+          <Pressable
+            className="bg-gray-400 px-6 py-2 rounded-xl"
+            onPress={() => {}}
+          >
+            <Text className="text-white font-semibold">Next &gt;&gt;</Text>
+          </Pressable>
+          <View className="flex-row space-x-4 mt-4 ">
+            <Pressable
+              className="bg-white px-6 py-2 rounded-xl border border-gray-400"
+              onPress={() => {}}
+            >
+              <Text className="text-green-800 font-semibold">Cancel</Text>
+            </Pressable>
+            <Pressable 
+              className="bg-green-800 px-6 py-2 rounded-xl ml-8 "
+              onPress={() => {}}
+            >
+              <Text className="text-white font-semibold">Save Changes</Text>
+            </Pressable>
+          </View>
+        </View>
       </View>
 
     </ScrollView>

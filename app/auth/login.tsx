@@ -17,21 +17,21 @@ export default function Login() {
 
   return (
     <ImageBackground
-      source={require('../../assets/images/plucking.jpg')} 
+      source={require('../../assets/images/plucking.jpg')}
       style={styles.background}
     >
       <View style={styles.container}>
         <View style={{ marginBottom: 80 }}>
           <Text style={styles.title}>Welcome Back to PluckMate</Text>
-        <Text style={styles.subtitle}>
-          Log in to access your bookings and exclusive experiences.
-        </Text>
+          <Text style={styles.subtitle}>
+            Log in to access your bookings and exclusive experiences.
+          </Text>
         </View>
 
-        <Text style={{ color: 'white', marginBottom: 5 }}>Email</Text>
+        <Text style={{ color: 'white', marginBottom: 5 , fontFamily: 'poppins' }}>Email</Text>
         <TextInput placeholder="Email" placeholderTextColor="#ccc" style={styles.input} />
 
-        <Text style={{ color: 'white', marginBottom: 5 }}>Password</Text>
+        <Text style={{ color: 'white', marginBottom: 5, fontFamily: 'poppins' }}>Password</Text>
         <TextInput placeholder="Password" placeholderTextColor="#ccc" style={styles.input} secureTextEntry />
 
         <View style={styles.row}>
@@ -42,12 +42,11 @@ export default function Login() {
           <Text style={styles.forgot}>Forgot password?</Text>
         </View>
 
-        <TouchableOpacity style={styles.button}
-        className= "bg-lightBrown ">
+        <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
       </View>
-      
+
     </ImageBackground>
   );
 }
@@ -61,6 +60,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: 'center',
+    marginBottom: 130,
   },
   title: {
     color: 'white',
@@ -68,17 +68,20 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 8,
+    fontFamily: 'poppins-bold',
   },
   subtitle: {
     color: 'white',
     textAlign: 'center',
     marginBottom: 30,
+    fontFamily: 'poppins',
   },
   input: {
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     borderRadius: 8,
     padding: 12,
     marginBottom: 15,
+    fontFamily: 'poppins',
   },
   row: {
     flexDirection: 'row',
@@ -93,13 +96,15 @@ const styles = StyleSheet.create({
   rememberText: {
     color: 'white',
     marginLeft: 8,
+    fontFamily: 'poppins',
   },
   forgot: {
     color: 'white',
     textDecorationLine: 'underline',
+    fontFamily: 'poppins',
   },
   button: {
-   
+    backgroundColor: '#B38A5C',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
@@ -107,5 +112,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
+    fontFamily: 'poppins-bold',
   },
 });

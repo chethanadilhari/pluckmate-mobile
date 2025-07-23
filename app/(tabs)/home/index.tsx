@@ -50,9 +50,9 @@ const SummaryTab = () => {
           iconColor="#10B981"
         >
             <View className="flex-row border-2 border-gray-400 bg-gray-100 rounded-2xl px-4 py-4 mt-2 justify-between items-center">
-            <Text className="text-green-700 text-lg font-semibold">Present: 38</Text>
+            <Text className="text-green-700 text-md font-semibold">Present: 38</Text>
             <View style={{ width: 2, height: 32, backgroundColor: '#747474' }} />
-            <Text className="text-red-700 text-lg font-semibold">Absent: 12</Text>
+            <Text className="text-red-700 text-md font-semibold">Absent: 12</Text>
             </View>
         </Card>
 

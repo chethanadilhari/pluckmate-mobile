@@ -11,7 +11,7 @@ const Tasks = () => {
         backgroundColor: 'white',
       }}
       >
-      <Text className="font-inter text-xl text-teaGreen">tasks</Text>
+      <Text className="font-inter text-xl text-teaGreen">tasks </Text>
     </View>
   )
 }

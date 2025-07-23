@@ -1,3 +1,4 @@
+import { logout } from '@/services/authService';
 import {
   Entypo,
   Feather,
@@ -50,17 +51,16 @@ const CustomDrawer = ({ closeDrawer }: CustomDrawerProps) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleNavigate = (route: ValidRoute) => {
-  if (route === '/logout') {
-    // Optional: clear session data here
-    // await AsyncStorage.clear();
+  const handleNavigate = async (route: ValidRoute) => {
+    if (route === '/logout') {
+      await logout();
 
-    router.replace('/auth/login'); //  Navigate to login screen
-  } else {
-    router.push(route as any);
-  }
-  closeDrawer();
-};
+      router.replace('/auth/login'); //  Navigate to login screen
+    } else {
+      router.push(route as any);
+    }
+    closeDrawer();
+  };
 
 
   const sections: Section[] = [
@@ -102,7 +102,7 @@ const CustomDrawer = ({ closeDrawer }: CustomDrawerProps) => {
       title: 'Communication',
       items: [
         {
-          icon: <FontAwesome name="user" size={28} color="#555252" padding="4"/>,
+          icon: <FontAwesome name="user" size={28} color="#555252" padding="4" />,
           label: 'Profile',
           route: '/profile',
         },

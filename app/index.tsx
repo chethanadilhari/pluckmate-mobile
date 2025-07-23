@@ -1,32 +1,25 @@
 import { useRouter } from "expo-router";
-import * as SplashScreen from 'expo-splash-screen';
-import React, { useEffect } from 'react';
+import { useEffect } from "react";
 import { ActivityIndicator, Text, View } from "react-native";
+import { getToken } from "../services/tokenManager";
 
-SplashScreen.preventAutoHideAsync();
+Object.defineProperty(String.prototype, 'capitalize', {
+  value: function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  },
+  enumerable: false
+});
 
-const Index = () => {
+export default function Index() {
   const router = useRouter();
 
-    useEffect(() => {
-    const prepare = async () => {
-      // Wait 2 seconds or until fonts/assets are ready
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      await SplashScreen.hideAsync();
-    };
-
-    prepare();
-  }, []);
-  
   useEffect(() => {
     const checkLogin = async () => {
-      // const token = await getToken();
-      // Simulate a delay for checking login status
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      const token = true; // Simulating a token for demonstration purposes
-      const destination = token ? "/(tabs)/home" : "/(tabs)/tasks";
+      const token = await getToken();
+      const destination = token ? "/(tabs)/home" : "/auth/login";
       router.replace(destination);
     };
+
     checkLogin();
   }, []);
 
@@ -37,5 +30,3 @@ const Index = () => {
     </View>
   );
 }
-
-export default Index;

@@ -1,117 +1,108 @@
 import Checkbox from 'expo-checkbox';
-import React from 'react';
+import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
 import {
+  ActivityIndicator,
+  Alert,
   ImageBackground,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-
-
-
+import { login } from '../../services/authService';
 
 export default function Login() {
-  const [remember, setRemember] = React.useState(false);
+  const [remember, setRemember] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const handleLogin = async() => {
+    setLoading(true);
+    console.log("Login button pressed");
+    try {
+      const user = await login(email, password);
+      if (user) {
+        router.replace('/home');
+      } else {
+        Alert.alert("Login Failed", "Invalid email or password.");
+      }   
+    } catch (error) {
+      console.error("Login error:", error);
+      Alert.alert("Login Failed", "Invalid email or password.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <ImageBackground
-      source={require('../../assets/images/plucking.jpg')}
-      style={styles.background}
+      source={require('../../assets/images/login-bg.jpg')}
+      className="flex-1 justify-center px-6"
+      imageStyle={{ resizeMode: 'cover' }}
     >
-      <View style={styles.container}>
-        <View style={{ marginBottom: 80 }}>
-          <Text style={styles.title}>Welcome Back to PluckMate</Text>
-          <Text style={styles.subtitle}>
-            Log in to access your bookings and exclusive experiences.
-          </Text>
-        </View>
-
-        <Text style={{ color: 'white', marginBottom: 5 , fontFamily: 'poppins' }}>Email</Text>
-        <TextInput placeholder="Email" placeholderTextColor="#ccc" style={styles.input} />
-
-        <Text style={{ color: 'white', marginBottom: 5, fontFamily: 'poppins' }}>Password</Text>
-        <TextInput placeholder="Password" placeholderTextColor="#ccc" style={styles.input} secureTextEntry />
-
-        <View style={styles.row}>
-          <View style={styles.rememberContainer}>
-            <Checkbox value={remember} onValueChange={setRemember} />
-            <Text style={styles.rememberText}>Remember Me</Text>
-          </View>
-          <Text style={styles.forgot}>Forgot password?</Text>
-        </View>
-
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
+      <View className="mb-20">
+        <Text className="text-white text-2xl py-5 font-bold text-center">
+          Welcome Back to PluckMate
+        </Text>
+        <Text className="text-white text-md text-center pb-24 mt-1">
+          Log in to access your bookings and exclusive experiences.
+        </Text>
       </View>
 
+      <View className="space-y-4 mb-16">
+        <View className="mb-6">
+          <Text className="text-white mb-4">Email</Text>
+          <TextInput
+            placeholder="Enter your Email"
+            placeholderTextColor="#919090"
+            className="bg-white/80 rounded-lg text-teaGreen px-4 py-3"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            value={email}
+            onChangeText={setEmail}
+          />
+        </View>
+
+        <View>
+          <Text className="text-white mb-4">Password</Text>
+          <TextInput
+            placeholder="Enter your Password"
+            placeholderTextColor="#919090"
+            secureTextEntry
+            className="bg-white/80 rounded-lg text-teaGreen px-4 py-3"
+            value={password}
+            onChangeText={setPassword}
+          />
+        </View>
+
+        <View className="flex-row justify-between items-center mt-8">
+          <View className="flex-row items-center">
+            <Checkbox value={remember} onValueChange={setRemember} />
+            <Text className="text-white ml-2">Remember Me</Text>
+          </View>
+
+          <TouchableOpacity onPress={() => router.push('/auth/forgotPassword')}>
+            <Text className="text-white underline">Forgot password?</Text>
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity
+          className="bg-[#B38A5C] py-3 rounded-xl mt-20"
+          onPress={handleLogin}
+          disabled={loading}
+        >
+          {loading ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text className="text-white text-center text-lg font-bold">
+              Login
+            </Text>
+          )}
+        </TouchableOpacity>
+      </View>
     </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    resizeMode: 'cover',
-  },
-  container: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
-    marginBottom: 130,
-  },
-  title: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 8,
-    fontFamily: 'poppins-bold',
-  },
-  subtitle: {
-    color: 'white',
-    textAlign: 'center',
-    marginBottom: 30,
-    fontFamily: 'poppins',
-  },
-  input: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    borderRadius: 8,
-    padding: 12,
-    marginBottom: 15,
-    fontFamily: 'poppins',
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 25,
-  },
-  rememberContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  rememberText: {
-    color: 'white',
-    marginLeft: 8,
-    fontFamily: 'poppins',
-  },
-  forgot: {
-    color: 'white',
-    textDecorationLine: 'underline',
-    fontFamily: 'poppins',
-  },
-  button: {
-    backgroundColor: '#B38A5C',
-    padding: 15,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontFamily: 'poppins-bold',
-  },
-});

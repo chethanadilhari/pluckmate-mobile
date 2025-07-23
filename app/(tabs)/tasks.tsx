@@ -1,7 +1,7 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React from 'react';
+import { Text, View } from 'react-native';
 
-const tasks = () => {
+const Tasks = () => {
   return (
     <View
       style={{
@@ -16,4 +16,4 @@ const tasks = () => {
   )
 }
 
-export default tasks
+export default Tasks;

@@ -51,9 +51,17 @@ const CustomDrawer = ({ closeDrawer }: CustomDrawerProps) => {
   const pathname = usePathname();
 
   const handleNavigate = (route: ValidRoute) => {
+  if (route === '/logout') {
+    // Optional: clear session data here
+    // await AsyncStorage.clear();
+
+    router.replace('/auth/login'); //  Navigate to login screen
+  } else {
     router.push(route as any);
-    closeDrawer();
-  };
+  }
+  closeDrawer();
+};
+
 
   const sections: Section[] = [
     {

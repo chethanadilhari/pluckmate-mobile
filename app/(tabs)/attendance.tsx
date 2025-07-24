@@ -18,59 +18,47 @@ const Attendance = () => {
     { id: 5, name: 'Charlie White', present: false },
   ];
 
-  const onChange = (event: any, selectedDate?: Date) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'ios'); // iOS: keep visible
-    setDate(currentDate);
+  const onChange = (_event: any, selectedDate?: Date) => {
+    if (selectedDate) setDate(selectedDate);
+    if (Platform.OS !== 'ios') setShow(false); // only auto-hide on Android
   };
 
   return (
-    <ScrollView className="flex-1 rounded-3xl mb-24 bg-white" showsVerticalScrollIndicator={false}>
+    <ScrollView className="flex-1 rounded-3xl mb-24 px-4 py-2 bg-white" showsVerticalScrollIndicator={false}>
       <View
-        className=" p-4 rounded-3xl bg-lightTeaGreen mt-4 ml-2 mr-2"
+        className=" p-4 rounded-3xl bg-gray-200 mt-4 ml-2 mr-2"
         style={{
           flex: 1,
         }}
       >
-        <View className='flex-row items-center justify-between'>
-          <Text style={{ fontFamily: 'Poppins-Bold' }} className="text-2xl pl-2 pt-4">attendance</Text>
+        <View className='flex-row items-center justify-between '>
+          <Text className="text-2xl pl-2 text-teaGreen font-bold ">Attendance</Text>
 
-          <View className="pl-4 items-center mt-4">
-            <Pressable
-              className="flex-row items-center px-4 py-2 bg-green-800 rounded-xl space-x-2"
-              onPress={() => setShow(true)}
-            >
-              <CalendarDays color="white" size={18} />
-              <Text className="text-white">
-                {date.toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </Text>
-              <ChevronDown color="white" size={16} />
-            </Pressable>
-
-            {show && (
+          <View className="pl-4 items-center ">
+          {show && (
+            <View className="flex-row items-center px-4 py-1 bg-teaGreen rounded-2xl space-x-2">
+              <CalendarDays color="white" size={20} />
               <DateTimePicker
                 value={date}
                 mode="date"
                 display="default"
-                onChange={onChange}
-              />
+                  onChange={onChange}
+                />
+                <ChevronDown color="white" size={20} />
+              </View>
             )}
           </View>
         </View>
-        <View style={{ alignItems: 'flex-start', marginTop: 24, width: '100%' }}>
+        <View style={{ alignItems: 'flex-start', marginTop: 14, width: '100%' }}>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
               backgroundColor: 'white',
-              borderRadius: 8,
-              width: '90%',
-              marginLeft: 16,
-              paddingHorizontal: 10,
+              borderRadius: 12,
+              width: '100%',
+
+              paddingHorizontal: 4,
               borderWidth: 1,
               borderColor: '#9ca3af',
             }}
@@ -80,11 +68,12 @@ const Attendance = () => {
                 flex: 1,
                 color: 'black',
                 textAlign: 'left',
-                fontSize: 16,
+                fontSize: 14,
+                paddingHorizontal: 10,
                 paddingVertical: 10,
               }}
               placeholder='Search Employee By Name...'
-              placeholderTextColor={'Brown'}
+              placeholderTextColor={'gray'}
             />
             <Search color="black" size={20} style={{ marginLeft: 8 }} />
           </View>
@@ -148,7 +137,7 @@ const Attendance = () => {
               Total Employee Count
             </Text>
             <View className="border-2 border-gray-400 bg-gray-100 rounded-2xl px-4 py-2 mt-2 mr-8">
-              <Text style={{fontFamily: 'Poppins'}} className="text-gray-700 text-lg font-semibold">
+              <Text style={{ fontFamily: 'Poppins' }} className="text-gray-700 text-lg font-semibold">
                 12
               </Text>
             </View>
@@ -156,15 +145,15 @@ const Attendance = () => {
 
           <View>
             <View className="flex-row border-2 border-gray-400 bg-gray-100 rounded-2xl px-4 py-4 mt-2 justify-between items-center">
-              <Text style={{fontFamily: 'Poppins'}} className="text-green-700 text-lg font-semibold">Present Count</Text>
+              <Text style={{ fontFamily: 'Poppins' }} className="text-green-700 text-lg font-semibold">Present Count</Text>
               <View style={{ width: 2, height: 32, backgroundColor: '#747474' }} />
-              <Text style={{fontFamily: 'Poppins'}} className="text-green-700 text-lg font-semibold">10</Text>
+              <Text style={{ fontFamily: 'Poppins' }} className="text-green-700 text-lg font-semibold">10</Text>
             </View>
 
             <View className="flex-row border-2 border-gray-400 bg-gray-100 rounded-2xl px-4 py-4 mt-2 justify-between items-center">
-              <Text style={{fontFamily: 'Poppins'}} className="text-green-700 text-lg font-semibold">Absent Count</Text>
+              <Text style={{ fontFamily: 'Poppins' }} className="text-green-700 text-lg font-semibold">Absent Count</Text>
               <View style={{ width: 2, height: 32, backgroundColor: '#747474' }} />
-              <Text style={{fontFamily: 'Poppins'}} className="text-red-700 text-lg font-semibold">02</Text>
+              <Text style={{ fontFamily: 'Poppins' }} className="text-red-700 text-lg font-semibold">02</Text>
             </View>
           </View>
         </View>

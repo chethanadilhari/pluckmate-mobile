@@ -43,7 +43,7 @@ const SummaryTab = () => {
       </ImageBackground>
 
       {/* Cards */}
-      <View className="p-4 rounded-3xl bg-lightTeaGreen mt-4">
+      <View className="p-4 rounded-3xl bg-gray-300 mt-4">
         <Card
           title="Attendance Summary"
           icon={<FontAwesome5 name="user-check" size={18} color="white" />}

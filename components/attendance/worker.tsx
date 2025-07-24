@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Text, Pressable } from 'react-native'
+import React from 'react';
+import { Pressable, Text, View } from 'react-native';
 
 interface employeeRecord {
   id: number;

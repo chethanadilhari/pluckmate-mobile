@@ -49,7 +49,7 @@ const SummaryTab = () => {
           icon={<FontAwesome5 name="user-check" size={18} color="white" />}
           iconColor="#10B981"
         >
-            <View className="flex-row border-2 border-gray-400 bg-gray-100 rounded-2xl px-4 py-4 mt-2 justify-between items-center">
+            <View className="flex-row border-2 border-teaGreen bg-gray-100 rounded-2xl px-4 py-4 mt-2 justify-between items-center">
             <Text className="text-green-700 text-md font-semibold">Present: 38</Text>
             <View style={{ width: 2, height: 32, backgroundColor: '#747474' }} />
             <Text className="text-red-700 text-md font-semibold">Absent: 12</Text>
@@ -61,7 +61,7 @@ const SummaryTab = () => {
           icon={<MaterialIcons name="task-alt" size={20} color="white" />}
           iconColor="#10B981"
         >
-          <View className="flex-row border-2 border-gray-400 bg-gray-100 rounded-2xl px-4 py-4 mt-2 mb-4 justify-between items-center">
+          <View className="flex-row border-2 border-teaGreen bg-gray-100 rounded-2xl px-4 py-4 mt-2 mb-4 justify-between items-center">
             
             <Text className="text-lightBrown font-semibold">Ongoing: 5</Text>
             <View style={{ width: 2, height: 32, backgroundColor: '#747474' }} />
@@ -77,7 +77,7 @@ const SummaryTab = () => {
           icon={<MaterialCommunityIcons name="leaf" size={20} color="white" />}
           iconColor="#10B981"
         >
-          <View className="flex-row border-2 border-gray-400 bg-gray-100 rounded-2xl px-4 py-4 mt-2 mb-4  justify-between items-center">
+          <View className="flex-row border-2 border-teaGreen bg-gray-100 rounded-2xl px-4 py-4 mt-2 mb-4  justify-between items-center">
             <Text className="text-lg font-semibold">Total: 456.5kg</Text>
             <Text className="text-gray-500 font-medium">Avg: 12.1kg</Text>
           </View>
@@ -88,7 +88,7 @@ const SummaryTab = () => {
           icon={<Feather name="award" size={20} color="white" />}
           iconColor="#B38A5C"
         >
-          <View className="flex-row border-2 border-gray-400 bg-gray-100 rounded-2xl px-4 py-4 mt-2 mb-4  justify-between items-center">
+          <View className="flex-row border-2 border-teaGreen bg-gray-100 rounded-2xl px-4 py-4 mt-2 mb-4  justify-between items-center">
             <Text className="text-lg font-semibold">Kumari D.</Text>
             <Text className="text-gray-500 font-medium">46.8kg</Text>
           </View>

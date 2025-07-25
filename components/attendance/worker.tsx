@@ -1,14 +1,15 @@
+import Checkbox from 'expo-checkbox';
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 interface employeeRecord {
   id: number;
   name: string;
   present: boolean;
 }
-const Worker = ({ data }: { data: employeeRecord }) => {
+const Worker = ({ data, togglePresent }: { data: employeeRecord, togglePresent: (id: number) => void }) => {
   return (
-    <View className='flex-row items-center justify-between'
+    <View className='flex-row items-center justify-between py-3'
       style={{
         marginTop: 12,
         width: '100%',
@@ -18,17 +19,16 @@ const Worker = ({ data }: { data: employeeRecord }) => {
         borderRadius: 8,
 
       }}>
-      <Text className="text-lg font-semibold text-gray-700 mt-4">{data.id}</Text>
-      <Text className="text-lg font-semibold text-gray-700 mt-4">{data.name}</Text>
-      <View className="flex-row items-center mt-4 space-x-2">
+      <Text className="text-md font-semibold text-gray-700 ">{data.id}</Text>
+      <Text className="text-md font-semibold text-gray-700 ">{data.name}</Text>
+      <View className="flex-row items-center space-x-2">
 
         <View className="flex-row items-center">
-          <Pressable onPress={() => { }}>
-            <View
-              className={`w-5 h-5 border rounded ${data.present ? 'bg-blue-500' : 'bg-white'}`}
-            />
-          </Pressable>
-
+          <Checkbox
+            value={data.present}
+            onValueChange={() => { togglePresent(data.id) }}
+            color={data.present ? '#1F4D33' : undefined}
+          />
         </View>
       </View>
     </View>

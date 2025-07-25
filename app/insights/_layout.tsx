@@ -1,15 +1,14 @@
-import { Slot } from 'expo-router';
-import { SafeAreaView } from 'react-native';
 
-const InsightsLayout = () => {
+import { Stack } from 'expo-router';
+
+
+export default function InsightLayout() {
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      
-      <Slot />
-
-    
-    </SafeAreaView>
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        title: '',
+      }}
+    />
   );
 };
-
-export default InsightsLayout;
